@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManagerTwoPlayer : MonoBehaviour
 {
@@ -86,5 +87,11 @@ public class GameManagerTwoPlayer : MonoBehaviour
             btn.interactable = true;
             btn.GetComponent<Image>().sprite = null;
         }
+    }
+
+    public void BackToMenu()
+    {
+        // Retourne au menu principal
+        SceneManager.LoadScene("MainMenu");
     }
 }

@@ -12,4 +12,10 @@ public class MainMenuUI : MonoBehaviour
     {
         SceneManager.LoadScene("VsComputerGame"); // À créer plus tard
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("Quitter le jeu");
+    }
 }
