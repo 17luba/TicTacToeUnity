@@ -11,6 +11,9 @@ public class GameManagerTwoPlayer : MonoBehaviour
     public TextMeshProUGUI statusText;
     public GameObject replayButton;
 
+    public AudioSource victoryAudioSource;
+    public AudioSource drawAudioSource;
+
     private string currentPlayer = "X";
     private string[,] board = new string[3, 3];
     private bool gameEnded = false;
@@ -35,12 +38,14 @@ public class GameManagerTwoPlayer : MonoBehaviour
         {
             gameEnded = true;
             statusText.text = $"Le joueur {currentPlayer} a gagné !";
+            PlayVictorySound();
             replayButton.SetActive(true);
         }
         else if (CheckDraw())
         {
             gameEnded = true;
             statusText.text = "Match nul !";
+            PlayDrawSound();
             replayButton.SetActive(true);
         }
         else
@@ -87,6 +92,16 @@ public class GameManagerTwoPlayer : MonoBehaviour
             btn.interactable = true;
             btn.GetComponent<Image>().sprite = null;
         }
+    }
+
+    void PlayVictorySound()
+    {
+        victoryAudioSource.Play();
+    }
+
+    void PlayDrawSound()
+    {
+        drawAudioSource.Play();
     }
 
     public void BackToMenu()
